@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Clock</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="clock">
+        <div class="hour"></div>
+        <div class="min"></div>
+        <div class="sec"></div>
+      </div>
+    </div>
+    <script>
+      // 12 point = 360 deg -> 1 hour = 30deg  + min/2*6
+      // 60 point = 360 deg -> 1 min = 6deg; 1 min = 1/60 hour 
+      // 60 point = 360 deg -> 1 s = 6deg
+
+      var hrEle = document.querySelector(".hour");
+      var minEle = document.querySelector(".min");
+      var secEle = document.querySelector(".sec");
+      console.log(hrEle.style);
+
+      setInterval(() => {
+        let time = new Date();
+        let hr = time.getHours() * 30;
+        let min = time.getMinutes()*6;
+        let sec = time.getSeconds()*6;
+        
+        hrEle.style.transform = `rotate(${hr + min/12}deg)`;
+        minEle.style.transform = `rotate(${min}deg)`;
+        secEle.style.transform = `rotate(${sec}deg)`
+      });
+    </script>
+  </body>
+</html>
